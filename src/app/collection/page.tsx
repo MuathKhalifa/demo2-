@@ -12,6 +12,8 @@ export default function Home() {
       {saveSketchMutation?.map((sketch) => (
         <div key={sketch._id}>{sketch.prompt}</div>
       ))}
+
+      <h1 className="text-white">hello</h1>
     </main>
   );
 }

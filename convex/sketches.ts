@@ -1,9 +1,14 @@
 import { internal } from "./_generated/api";
-import { internalMutation, mutation, query } from "./_generated/server";
+import {
+  internalAction,
+  internalMutation,
+  mutation,
+  query,
+} from "./_generated/server";
 import { v } from "convex/values";
 
 export const saveSketch = mutation({
-  args: { prompt: v.string() },
+  args: { prompt: v.string(), image: v.string() },
   handler: async (ctx, { prompt }) => {
     const sketch = await ctx.db.insert("sketches", {
       prompt,
@@ -15,6 +20,11 @@ export const saveSketch = mutation({
   },
 });
 
+export const generate = internalAction(
+  ({}, { prompt, image }: { prompt: string; image: string }) => {
+    //implement
+  }
+);
 // export const getSketch = query({
 //   args: { sketchId: v.id("sketches") },
 //   handler: (ctx, { sketchId }) => {
